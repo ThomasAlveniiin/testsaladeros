@@ -15,8 +15,6 @@
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
-            overflow-y: hidden;
-            overflow-x: hidden;
             position: relative;
             user-select: none;
             -webkit-user-drag: none;
@@ -24,18 +22,17 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #21D4FD;
-            background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
-            background-attachment: fixed; /* Agregamos esta línea para mantener el fondo en su posición original */
+            background-color: #ffffff;
+            background-attachment: fixed;
+            transition: background-color 0.5s; /* Agregamos una transición para el cambio de fondo */
         }
 
         @font-face {
-    font-family: 'America';
-    src: url('America.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
+            font-family: 'America';
+            src: url('America.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
 
         #logo {
             font-size: 64px;
@@ -51,34 +48,41 @@
         }
 
         #buttons {
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    position: relative;
-    opacity: 0;
-    animation: fadeIn 2s ease-in-out 0.5s forwards;
-    z-index: 1;
-}
+            display: flex;
+            flex-direction: row;
+            text-align: center;
+            position: relative;
+            opacity: 0;
+            z-index: 1;
+        }
 
-.button {
-    background-color: #0091ff; /* Cambiamos el color a azul */
-    font-weight: bold;
-    color: #fff;
-    font-size: 15px;
-    padding: 10px 30px;
-    border: none;
-    border-radius: 5px;
-    margin: 8px 15px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    text-decoration: none;
-}
+        /* Estilo para el botón .button */
+        .button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #202020; /* Fondo gris muy oscuro por defecto */
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            outline: none;
+            z-index: 2;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #6c747a;
+        }
 
         #title {
             font-size: 49px;
             color: #fff;
             opacity: 0;
-            font-family: 'America', sans-serif; /* Aplicamos la fuente America.ttf */
+            font-family: 'America', sans-serif;
             animation: fadeIn 2s ease-in-out forwards;
             text-align: center;
             position: relative;
@@ -97,28 +101,111 @@
             margin-top: 0px;
         }
 
+        /* Estilo para el modo oscuro */
+        .dark-mode {
+            background-color: #1f1f1f;
+            color: #fff;
+        }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
+        /* Estilo para el botón de Modo Oscuro */
+        #dark-mode-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #202020; /* Fondo gris muy oscuro por defecto */
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            outline: none;
+            z-index: 2;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #dark-mode-button:hover {
+            background-color: #393a3a;
+            color: #fff;
+        }
+
+        #dark-mode-button.dark-mode {
+            background-color: #c3d1d3;
+            color: #fff;
+        }
+
+        #discord-button {
+            position: fixed;
+            top: 10px;
+            text-decoration: none;
+            left: 10px; /* Cambié "right" por "left" para ubicarlo en la parte superior izquierda */
+            background-color: #202020; /* Fondo gris muy oscuro por defecto */
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            outline: none;
+            z-index: 2;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #discord-button:hover {
+            background-color: #393a3a;
+            color: #fff;
+        }
+
+        #discord-button.dark-mode {
+            background-color: #c3d1d3;
+            color: #fff;
+        }
+
+        /* Estilo para la imagen */
+        img {
+            width: 16%;
+            -webkit-user-drag: none;
+        }
+
+        #imagen-ventajas {
+    width: 50%;
+    -webkit-user-drag: none;
+}
+
+        /* Media query para dispositivos móviles */
+        @media screen and (max-width: 767px) {
+            #dark-mode-button, #discord-button {
+                font-size: 12px;
+                padding: 5px 10px;
             }
-            to {
-                opacity: 1;
+
+            img {
+                width: 80%;
+                padding-top: 40px;
+            }
+
+            #imagen-ventajas {
+                width: 95%; /* Cambia el ancho de la imagen a 40% en dispositivos móviles */
+            }
+
+            #copyright {
+                font-size: 10px;
             }
         }
+
     </style>
 </head>
 <body>
-    <img src="https://i.ibb.co/9GJ4PXt/image-1.png<" alt="Imagen de ejemplo" style="width: 16%; -webkit-user-drag: none;">
-    <div id="buttons">
-        <!-- Botón de Discord a la izquierda -->
-        <a href="https://discord.gg/saladeros" class="button" id="discord-button">Discord</a>
-    </div>
-<stripe-buy-button
-  buy-button-id="buy_btn_1Ns6kNCMJFXUy38k8U3hiPm4"
-  publishable-key="pk_live_51JBmB7CMJFXUy38knOqgBTM8oNEk2l4l9hJXCuAUzSwwNl5VoiBq5uFJYYQJ7BTbSViU7T6jn7wydckwUJI7PDfb00glGJaqNQ"
->
-</stripe-buy-button> 
+    <button id="dark-mode-button" onclick="toggleDarkMode()">Modo Oscuro</button>
+    <img src="https://i.ibb.co/fdZzwzz/24324471e5bab97430475248431f91c837389726.png" alt="Imagen de ejemplo">
+    <a href="https://discord.gg/saladeros" id="discord-button">Discord</a>
+    <stripe-buy-button
+        buy-button-id="buy_btn_1Ns6kNCMJFXUy38k8U3hiPm4"
+        publishable-key="pk_live_51JBmB7CMJFXUy38knOqgBTM8oNEk2l4l9hJXCuAUzSwwNl5VoiBq5uFJYYQJ7BTbSViU7T6jn7wydckwUJI7PDfb00glGJaqNQ"
+    >
+    </stripe-buy-button> 
 
     <!-- Formulario de PayPal -->
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
@@ -126,12 +213,39 @@
         <input type="hidden" name="hosted_button_id" value="8RSYE5LXRVPF4" />
         <input type="hidden" name="currency_code" value="EUR" />
         <input type="image" src="https://i.imgur.com/FqiqeYN.png" border="0" name="submit" title="PayPal es una forma segura y fácil de pagar en línea." alt="Comprar ahora" style="width: 170px; -webkit-user-drag: none;" />
-      </form>
+    </form>
+    <img id="imagen-ventajas" src="https://i.ibb.co/t2gvbh9/Proyecto-nuevo-3-1.png" alt="Imagen de ejemplo">
     </div>
-    <img src="https://i.ibb.co/t2gvbh9/Proyecto-nuevo-3-1.png" alt="Imagen de ejemplo" style="width: 50%; -webkit-user-drag: none;">
     <footer>
-        <p style="color: white; font-family: 'IBM Plex Sans', sans-serif;">&copy; Saladeros 2023 & Thomas Alvenin © El sistema de proceso de pago son operados por Stripe, Inc.</p>
-        </p>
+        <p id="copyright" style="color: #202020; font-family: 'IBM Plex Sans', sans-serif;">&copy; Saladeros 2023 & Thomas Alvenin © El sistema de proceso de pago son operados por Stripe, Inc.</p>
     </footer>
+    <script>
+        function toggleDarkMode() {
+            var body = document.body;
+            var imagen = document.querySelector('img');
+            var texto = document.querySelector('p');
+            var discordButton = document.getElementById('discord-button');
+            var darkModeButton = document.getElementById('dark-mode-button');
+
+            // Cambiar el modo oscuro
+            if (body.classList.contains("dark-mode")) {
+                body.classList.remove("dark-mode");
+                imagen.src = "https://i.ibb.co/fdZzwzz/24324471e5bab97430475248431f91c837389726.png";
+                texto.style.color = "#202020";
+                discordButton.style.backgroundColor = "#202020";
+                discordButton.style.color = "#fff";
+                darkModeButton.style.backgroundColor = "#202020";
+                darkModeButton.style.color = "#fff";
+            } else {
+                body.classList.add("dark-mode");
+                imagen.src = "https://i.ibb.co/5RwVDV1/image-1.png";
+                texto.style.color = "#fff";
+                discordButton.style.backgroundColor = "#fff";
+                discordButton.style.color = "#202020";
+                darkModeButton.style.backgroundColor = "#fff";
+                darkModeButton.style.color = "#202020";
+            }
+        }
+    </script>
 </body>
 </html>
